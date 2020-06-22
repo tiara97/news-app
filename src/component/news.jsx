@@ -66,19 +66,20 @@ class News extends React.Component {
     }
     changeCategory = (index) => {
         console.log(this.state.category[index])
+        console.log(this.state.mix)
         let category = this.state.category[index]
         if (category === 'Business') {
-            Axios.get(URL + business + APIkey)
+            Axios.get(this.state.mix + '&' + business + APIkey)
                 .then(response => {
                     this.setState({ data: response.data.articles})
                 })
         } else if (category === 'Technology') {
-            Axios.get(URL + technology + APIkey)
+            Axios.get(this.state.mix + '&' + technology + APIkey)
                 .then(response => {
                     this.setState({ data: response.data.articles})
                 })
         } else if (category === 'Science') {
-            Axios.get(URL + science + APIkey)
+            Axios.get(this.state.mix + '&' + science + APIkey)
                 .then(response => {
                     this.setState({ data: response.data.articles})
                 })
